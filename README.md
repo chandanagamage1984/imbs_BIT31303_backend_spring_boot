@@ -21,7 +21,9 @@ Clone the repository:
 Bash
 
 git clone https://github.com/chandanagamage1984/imbs_BIT31303_backend_spring_boot.git
+
 cd imbs_BIT31303_backend_spring_boot
+
 Build the project:
 
 Bash
