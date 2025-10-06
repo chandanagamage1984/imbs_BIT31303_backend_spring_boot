@@ -24,8 +24,8 @@ public class Project {
     @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate endDate;
 
-    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
-    private List<EmployeeProject> employeeProjects;
+    // @OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
+    // private List<EmployeeProject> employeeProjects;
 
     // Constructors
     public Project() {
@@ -70,11 +70,11 @@ public class Project {
         this.endDate = endDate;
     }
 
-    public List<EmployeeProject> getEmployeeProjects() {
-        return employeeProjects;
-    }
+    // public List<EmployeeProject> getEmployeeProjects() {
+    // return employeeProjects;
+    // }
 
-    public void setEmployeeProjects(List<EmployeeProject> employeeProjects) {
-        this.employeeProjects = employeeProjects;
-    }
+    // public void setEmployeeProjects(List<EmployeeProject> employeeProjects) {
+    // this.employeeProjects = employeeProjects;
+    // }
 }
