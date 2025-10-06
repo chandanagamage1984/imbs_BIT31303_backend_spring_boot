@@ -1,7 +1,7 @@
 package com.employeesmanagementsystem.model;
 
 import jakarta.persistence.*;
-import java.util.List;
+// import java.util.List;
 
 @Entity
 @Table(name = "departments")
@@ -16,8 +16,8 @@ public class Department {
     @Column(nullable = false)
     private String location;
 
-    @OneToMany(mappedBy = "department", cascade = CascadeType.ALL)
-    private List<Employee> employees;
+    // @OneToMany(mappedBy = "department", cascade = CascadeType.ALL)
+    // private List<Employee> employees;
 
     // Constructors
     public Department() {
@@ -53,11 +53,11 @@ public class Department {
         this.location = location;
     }
 
-    public List<Employee> getEmployees() {
-        return employees;
-    }
+    // public List<Employee> getEmployees() {
+    // return employees;
+    // }
 
-    public void setEmployees(List<Employee> employees) {
-        this.employees = employees;
-    }
+    // public void setEmployees(List<Employee> employees) {
+    // this.employees = employees;
+    // }
 }

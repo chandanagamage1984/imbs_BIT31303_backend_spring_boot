@@ -1,6 +1,7 @@
 package com.employeesmanagementsystem.controller;
 
 import com.employeesmanagementsystem.model.Department;
+import com.employeesmanagementsystem.dto.DepartmentInputDto;
 import com.employeesmanagementsystem.service.DepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -31,12 +32,12 @@ public class DepartmentController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Department> putDepartment(@PathVariable int id, @RequestBody Department department) {
-        if (id != department.getDepartmentId()) {
-            return ResponseEntity.badRequest().build();
-        }
+    public ResponseEntity<Department> putDepartment(@PathVariable int id, @RequestBody DepartmentInputDto departmentInput) {
+        Department departmentUpdateData = new Department(departmentInput.getName(), departmentInput.getLocation());
+        departmentUpdateData.setDepartmentId(id);
 
-        Department updatedDepartment = departmentService.updateDepartment(id, department);
+        Department updatedDepartment = departmentService.updateDepartment(id, departmentUpdateData);
+
         if (updatedDepartment != null) {
             return ResponseEntity.ok(updatedDepartment);
         }
