@@ -1,103 +1,291 @@
-☕ Employee Management System Backend (Spring Boot)
-This repository holds the backend API for the Employee Management System, built with Spring Boot and Java. It provides robust RESTful services for managing employee and department data, typically consumed by a frontend application like an Angular UI.
+Employee Management System
+A modern, responsive web application for managing employees and departments built with Angular and Angular Material. This application provides a complete CRUD (Create, Read, Update, Delete) interface with search functionality and works with both ASP.NET Core and Spring Boot backends.
 
-🚀 Getting Started
-These instructions will get you a copy of the project up and running on your local machine for development and testing.
+https://img.shields.io/badge/Angular-17-red https://img.shields.io/badge/Spring%2520Boot-3.2-green https://img.shields.io/badge/ASP.NET%2520Core-7-blue https://img.shields.io/badge/Material%2520Design-3-757575
 
-Prerequisites
-You will need the following installed:
+🚀 Features
+Employee Management
+✅ View All Employees - Complete list with sorting and pagination
 
-Java Development Kit (JDK) (version 17 or higher recommended).
+✅ Add New Employees - Modal form with validation
 
-Apache Maven (for dependency management and building).
+✅ Edit Employees - Inline editing with form validation
 
-SQL Database (MySQL, PostgreSQL, or H2/HSQLDB for development).
+✅ Delete Employees - Confirmation dialog for safe deletion
 
-IDE (IntelliJ IDEA or VS Code with Spring extensions).
+✅ Search Employees - By ID, department, or free text search
 
-Installation and Setup
-Clone the repository:
+✅ Responsive Design - Works on desktop, tablet, and mobile
 
-Bash
+Department Management
+✅ View All Departments - Organized list with department details
 
-git clone https://github.com/chandanagamage1984/imbs_BIT31303_backend_spring_boot.git
+✅ Add New Departments - Simple form with required fields
 
-cd imbs_BIT31303_backend_spring_boot
+✅ Edit Departments - Quick editing of department information
 
-Build the project:
+✅ Delete Departments - Safe deletion with confirmation
 
-Bash
+✅ Search Departments - By ID, name, or location
 
-mvn clean install
-Configure the Database Connection:
+Technical Features
+🎨 Angular Material UI - Modern, accessible Material Design components
 
-Open the src/main/resources/application.yml file.
+📱 Fully Responsive - Optimized for all screen sizes
 
-Update the database properties under the spring.datasource section.
+🔍 Advanced Search - Multiple search criteria and filters
 
-Example application.yml for MySQL:
+⚡ Real-time Validation - Form validation with user feedback
 
-YAML
+🛡️ Error Handling - Comprehensive error handling and user notifications
 
-spring:
-  datasource:
-    url: jdbc:mysql://localhost:3306/bit31303_emp_mgt_sys
-    username: root
-    password: your_database_password
-    driver-class-name: com.mysql.cj.jdbc.Driver
-  jpa:
-    hibernate:
-      # Use 'update' to automatically create/update the schema during development
-      # Use 'none' or 'validate' for production
-      ddl-auto: update
-    show-sql: true
-(Note: If you are using a relational database, Spring Boot's JPA/Hibernate will handle table creation based on your entity models if ddl-auto is set to update.)
+🔄 Loading States - Visual feedback during API operations
 
-▶️ Running the Application
-1. Run via CLI (Maven)
-Execute the Spring Boot application directly using Maven:
+🛠️ Technology Stack
+Frontend
+Angular 17 - Modern web framework
 
-Bash
+Angular Material 17 - UI component library
 
-mvn spring-boot:run
-2. Run via Executable JAR
-If you have built the JAR file:
+TypeScript - Type-safe JavaScript
 
-Bash
+RxJS - Reactive programming library
 
-java -jar target/your-project-name.jar
-The application will typically start on HTTP port 8080 by default, unless configured otherwise in application.yml.
+SCSS - Advanced CSS with variables and mixins
 
-⚙️ Configuration
-The primary configuration is done in src/main/resources/application.yml. Key server settings include:
+Backend (Choose One)
+Spring Boot 3.2 - Java-based backend with JPA/Hibernate
 
-Property	Default	Description
-server.port	8080	The port the application runs on.
-spring.datasource.url	N/A	JDBC connection string for the database.
-spring.jpa.hibernate.ddl-auto	none	Controls database schema generation (create, update, validate).
-spring.mvc.servlet.path	/	Base path for all REST controllers (e.g., /api).
+ASP.NET Core 7 - C#-based backend with Entity Framework
 
-API Base Path
-Assuming your controllers are mapped to /api (e.g., @RequestMapping("/api/employees")), the base URL for the API is usually: http://localhost:8080/api.
+📋 Prerequisites
+Before running this application, ensure you have the following installed:
 
-🧱 API Endpoints
-The API provides endpoints for standard CRUD operations:
+Node.js (version 16 or higher) - Download here
 
-Departments API
-Method	Endpoint	Description
-GET	/api/departments	Retrieves all departments.
-GET	/api/departments/{id}	Retrieves a single department by ID.
-POST	/api/departments	Creates a new department.
-PUT	/api/departments/{id}	Updates an existing department.
-DELETE	/api/departments/{id}	Deletes a department.
+npm (comes with Node.js) or yarn
 
-Employees API
-Method	Endpoint	Description
-GET	/api/employees	Retrieves all employees.
-GET	/api/employees/{id}	Retrieves a single employee by ID.
-POST	/api/employees	Creates a new employee.
-PUT	/api/employees/{id}	Updates an existing employee.
-DELETE	/api/employees/{id}	Deletes an employee.
+Angular CLI (version 17) - Install with:
 
-🤝 Contribution
-Contributions are welcome! Please fork the repository and submit a pull request with your suggested changes.
+bash
+npm install -g @angular/cli@17
+Backend Requirements (Choose One)
+For Spring Boot:
+Java 17 or higher
+
+Maven 3.6 or higher
+
+MySQL 8.0 or higher
+
+For ASP.NET Core:
+.NET 7 SDK or higher
+
+Visual Studio 2022 or Visual Studio Code
+
+SQL Server or MySQL
+
+⚙️ Installation & Setup
+1. Clone the Repository
+bash
+git clone <repository-url>
+cd employee-management-ui
+2. Install Dependencies
+bash
+npm install
+3. Environment Configuration
+Development Environment
+Update src/environments/environment.ts:
+
+For Spring Boot:
+
+typescript
+export const environment = {
+  production: false,
+  apiUrl: 'http://localhost:8080/api'
+};
+For ASP.NET Core:
+
+typescript
+export const environment = {
+  production: false,
+  apiUrl: 'https://localhost:7000/api'
+};
+Production Environment
+Update src/environments/environment.prod.ts:
+
+typescript
+export const environment = {
+  production: true,
+  apiUrl: '/api'  // Relative URL for same domain deployment
+};
+4. Backend Setup
+Option A: Spring Boot Backend
+Ensure your Spring Boot application is running on http://localhost:8080
+
+Database should be running and accessible
+
+Verify API endpoints are available at /api/employees and /api/departments
+
+Option B: ASP.NET Core Backend
+Ensure your ASP.NET Core application is running on https://localhost:7000
+
+Database should be configured and running
+
+Verify API endpoints are available at /api/employees and /api/departments
+
+5. Development Proxy (Optional)
+For development with CORS issues, use the proxy configuration in proxy.conf.json:
+
+json
+{
+  "/api": {
+    "target": "http://localhost:8080",
+    "secure": false,
+    "changeOrigin": true
+  }
+}
+🚀 Running the Application
+Development Server
+bash
+# Start the Angular development server
+ng serve
+
+# Or with specific port
+ng serve --port 4200
+
+# The application will be available at:
+# http://localhost:4200
+Build for Production
+bash
+# Build the project
+ng build
+
+# Build with production configuration
+ng build --configuration=production
+
+# The build artifacts will be stored in the `dist/` directory
+Running Tests
+bash
+# Unit tests
+ng test
+
+# End-to-end tests
+ng e2e
+
+# Code linting
+ng lint
+📁 Project Structure
+text
+src/
+├── app/
+│   ├── components/
+│   │   ├── employee/
+│   │   │   ├── employee-list/          # Employee list component
+│   │   │   └── employee-form/          # Employee form component
+│   │   └── department/
+│   │       ├── department-list/        # Department list component
+│   │       └── department-form/        # Department form component
+│   ├── models/                         # TypeScript interfaces
+│   │   ├── employee.model.ts
+│   │   └── department.model.ts
+│   ├── services/                       # API services
+│   │   ├── employee.service.ts
+│   │   └── department.service.ts
+│   ├── material.module.ts              # Angular Material imports
+│   └── app.module.ts                   # Main application module
+├── assets/                             # Static assets
+├── environments/                       # Environment configurations
+└── styles.scss                         # Global styles
+🎯 API Endpoints
+The application expects the following REST API endpoints:
+
+Employee Endpoints
+GET /api/employees - Get all employees
+
+GET /api/employees/{id} - Get employee by ID
+
+POST /api/employees - Create new employee
+
+PUT /api/employees/{id} - Update employee
+
+DELETE /api/employees/{id} - Delete employee
+
+GET /api/employees?departmentId={id} - Search by department
+
+Department Endpoints
+GET /api/departments - Get all departments
+
+GET /api/departments/{id} - Get department by ID
+
+POST /api/departments - Create new department
+
+PUT /api/departments/{id} - Update department
+
+DELETE /api/departments/{id} - Delete department
+
+🎨 UI Components
+Employee Management
+Employee List: Table view with sorting, pagination, and search
+
+Employee Form: Modal dialog for adding/editing employees
+
+Search Filters: Search by ID, department, or free text
+
+Department Management
+Department List: Clean table with department details
+
+Department Form: Simple form for department management
+
+Search Functionality: Find departments by ID or name
+
+🔧 Configuration
+Customizing Styles
+Modify src/styles.scss for global styles
+
+Component-specific styles are in respective .scss files
+
+Color scheme can be customized in Angular Material theme
+
+Adding New Features
+Create components in appropriate feature folders
+
+Add routes in app.module.ts
+
+Create services for API calls
+
+Define models for data structures
+
+🐛 Troubleshooting
+Common Issues
+CORS Errors:
+
+Ensure backend has CORS configured
+
+Use proxy configuration during development
+
+Check API URL in environment files
+
+Build Errors:
+
+Verify Node.js and Angular CLI versions
+
+Clear node_modules and reinstall dependencies:
+
+bash
+rm -rf node_modules
+npm install
+API Connection Issues:
+
+Verify backend is running
+
+Check API URLs in environment configuration
+
+Inspect browser network tab for detailed errors
+
+Styling Issues:
+
+Ensure Angular Material is properly imported
+
+Check SCSS compilation errors
+
+Verify component style encapsulation
